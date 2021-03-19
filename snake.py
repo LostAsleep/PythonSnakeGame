@@ -4,6 +4,10 @@ import time
 
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 
 class Snake:
@@ -57,20 +61,20 @@ class Snake:
 
     def up(self):
         """Change the direction of the Snake head to up."""
-        self.head.setheading(90)
+        self.head.setheading(UP)
 
 
     def down(self):
         """Change the direction of the Snake head to down."""
-        self.head.setheading(270)
+        self.head.setheading(DOWN)
 
 
     def left(self):
         """Change the direction of the Snake head to left."""
-        self.head.setheading(180)
+        self.head.setheading(LEFT)
 
 
     def right(self):
         """Change the direction of the Snake head to right."""
-        self.head.setheading(0)
+        self.head.setheading(RIGHT)
 
