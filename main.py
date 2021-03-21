@@ -18,11 +18,11 @@ def main():
     food = Food()    # Create the initial snake food.
     scoreboard = Scoreboard()
 
-    screen.listen()  # Start listening for user input of specific keys.
-    screen.onkey(snake.up, "Up")        # Remember: func without parens
-    screen.onkey(snake.down, "Down")    # Remember: func without parens
-    screen.onkey(snake.left, "Left")    # Remember: func without parens
-    screen.onkey(snake.right, "Right")  # Remember: func without parens
+    screen.listen()   # Start listening for user input of specific keys.
+    screen.onkey(snake.up, "Up")        # Remember: func without parens.
+    screen.onkey(snake.down, "Down")    # Remember: func without parens.
+    screen.onkey(snake.left, "Left")    # Remember: func without parens.
+    screen.onkey(snake.right, "Right")  # Remember: func without parens.
 
     game_is_on = True
     while game_is_on:    # The main game loop.
@@ -33,6 +33,12 @@ def main():
         if snake.head.distance(food) < 15:  # Detect collision with food.
             scoreboard.increase_score()     # Increase and update score.
             food.refresh()  # Move food to a different random location.
+
+        # Detect collision with wall.
+        out_of_x_bounds = snake.head.xcor() > 280 or snake.head.xcor() < -280
+        out_of_y_bounds = snake.head.ycor() > 280 or snake.head.ycor() < -280
+        if out_of_x_bounds or out_of_y_bounds:
+            game_is_on = False
 
     screen.exitonclick()  # The window doesn't just disappear after looping.
 
