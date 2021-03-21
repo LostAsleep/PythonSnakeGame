@@ -26,15 +26,13 @@ def main():
 
     game_is_on = True
     while game_is_on:    # The main game loop.
-        scoreboard.show_score()
-        
         screen.update()  # Refresh the contents on screen.
         time.sleep(0.1)  # The speed of the game.
         snake.move()     # For continuous movement of the snake.
 
         if snake.head.distance(food) < 15:  # Detect collision with food.
-            scoreboard.increase_score()
-            food.refresh()  # Move food to another random location.
+            scoreboard.increase_score()     # Increase and update score.
+            food.refresh()  # Move food to a different random location.
 
     screen.exitonclick()  # The window doesn't just disappear after looping.
 

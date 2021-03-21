@@ -16,13 +16,15 @@ class Scoreboard(turtle.Turtle):
         self.penup()       # No superfluous lines drawn.
         self.goto(0, 275)  # Upper center.
         self.score = 0
+        self.update()      # Print the intial score.
 
-    def show_score(self):
+    def update(self):
         """Print the current score. Clear text before updating"""
         current_score = f"Score: {self.score}"
         self.clear()  # So that we get no overlaping text.
         self.write(arg=current_score, move=False, align=ALIGNEMENT, font=FONT)
 
     def increase_score(self):
-        """Increases the score by one if called."""
+        """Increases the score by one if called and updates the board."""
         self.score += 1
+        self.update()
