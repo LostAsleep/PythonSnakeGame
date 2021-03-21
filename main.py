@@ -40,6 +40,8 @@ def main():
         if out_of_x_bounds or out_of_y_bounds:
             game_is_on = False
 
+    scoreboard.game_over()  # Print game over at center of screen.
+
     screen.exitonclick()  # The window doesn't just disappear after looping.
 
 

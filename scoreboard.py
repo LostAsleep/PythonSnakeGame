@@ -28,3 +28,9 @@ class Scoreboard(turtle.Turtle):
         """Increases the score by one if called and updates the board."""
         self.score += 1
         self.update()
+
+    def game_over(self):
+        """Print the game over message."""
+        self.goto(0, 0)
+        self.color("red")
+        self.write(arg="GAME OVER", align=ALIGNEMENT, font=FONT)
