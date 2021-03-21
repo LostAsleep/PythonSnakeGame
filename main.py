@@ -2,6 +2,7 @@ import turtle
 import time
 from snake import Snake
 from food import Food
+from scoreboard import Scoreboard
 
 
 def main():
@@ -15,6 +16,7 @@ def main():
 
     snake = Snake()  # Create the snake using the Snake class.
     food = Food()    # Create the initial snake food.
+    scoreboard = Scoreboard()
 
     screen.listen()  # Start listening for user input of specific keys.
     screen.onkey(snake.up, "Up")        # Remember: func without parens
@@ -24,11 +26,14 @@ def main():
 
     game_is_on = True
     while game_is_on:    # The main game loop.
+        scoreboard.show_score()
+        
         screen.update()  # Refresh the contents on screen.
         time.sleep(0.1)  # The speed of the game.
         snake.move()     # For continuous movement of the snake.
 
         if snake.head.distance(food) < 15:  # Detect collision with food.
+            scoreboard.increase_score()
             food.refresh()  # Move food to another random location.
 
     screen.exitonclick()  # The window doesn't just disappear after looping.
