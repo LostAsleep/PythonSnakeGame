@@ -38,6 +38,13 @@ class Snake:
             # create_snake_segment_function.
             self.create_snake_segment(pos[0], pos[1])
 
+    def extend(self):
+        """Add one segment to the snake.
+
+        The position of the new segment is the position of the last segment."""
+        last_pos = self.body[-1].position()
+        self.create_snake_segment(last_pos[0], last_pos[1])
+
     def move(self):
         """This moves the complete snake.
 

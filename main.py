@@ -14,9 +14,9 @@ def main():
     screen.title("A Snake Game")
     screen.tracer(0)  # No automatic refreshing of the stuff on screen.
 
-    snake = Snake()  # Create the snake using the Snake class.
-    food = Food()    # Create the initial snake food.
-    scoreboard = Scoreboard()
+    snake = Snake()   # Create the snake using the Snake class.
+    food = Food()     # Create the initial snake food.
+    scoreboard = Scoreboard()  # Create the scoreboard upper center.
 
     screen.listen()   # Start listening for user input of specific keys.
     screen.onkey(snake.up, "Up")        # Remember: func without parens.
@@ -30,9 +30,11 @@ def main():
         time.sleep(0.1)  # The speed of the game.
         snake.move()     # For continuous movement of the snake.
 
-        if snake.head.distance(food) < 15:  # Detect collision with food.
-            scoreboard.increase_score()     # Increase and update score.
+        # Detect collision with food.
+        if snake.head.distance(food) < 15:
+            scoreboard.increase_score()     # Increase/Update score.
             food.refresh()  # Move food to a different random location.
+            snake.extend()  # Add one segment to the snake body.
 
         # Detect collision with wall.
         out_of_x_bounds = snake.head.xcor() > 280 or snake.head.xcor() < -280
@@ -40,9 +42,14 @@ def main():
         if out_of_x_bounds or out_of_y_bounds:
             game_is_on = False
 
-    scoreboard.game_over()  # Print game over at center of screen.
+        # Detect collision with tail.
+        for segment in snake.body[1:]:
+            if snake.head.distance(segment) < 10:
+                game_is_on = False
+                break
 
-    screen.exitonclick()  # The window doesn't just disappear after looping.
+    scoreboard.game_over()  # Print game over at the center of the screen.
+    screen.exitonclick()    # The window doesn't just disappear after looping.
 
 
 if __name__ == "__main__":
