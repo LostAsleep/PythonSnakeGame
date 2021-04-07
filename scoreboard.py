@@ -35,6 +35,7 @@ class Scoreboard(turtle.Turtle):
         if self.score > self.high_score:
             self.high_score = self.score
         self.score = 0
+        self.update()
 
     # def game_over(self):
     #     """Print the game over message."""
