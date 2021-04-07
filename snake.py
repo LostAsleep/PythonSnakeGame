@@ -39,6 +39,7 @@ class Snake:
             self.create_snake_segment(pos[0], pos[1])
 
     def reset(self):
+        """Clear the snake and create initialize a new one."""
         for segment in self.body:
             segment.hideturtle()
         self.body.clear()
