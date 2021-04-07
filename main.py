@@ -40,15 +40,14 @@ def main():
         out_of_x_bounds = snake.head.xcor() > 280 or snake.head.xcor() < -280
         out_of_y_bounds = snake.head.ycor() > 280 or snake.head.ycor() < -280
         if out_of_x_bounds or out_of_y_bounds:
-            game_is_on = False
+            scoreboard.reset()
 
         # Detect collision with tail.
         for segment in snake.body[1:]:
             if snake.head.distance(segment) < 10:
-                game_is_on = False
+                scoreboard.reset()
                 break
 
-    scoreboard.game_over()  # Print game over at the center of the screen.
     screen.exitonclick()    # The window doesn't just disappear after looping.
 
 
