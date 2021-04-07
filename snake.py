@@ -38,6 +38,13 @@ class Snake:
             # create_snake_segment_function.
             self.create_snake_segment(pos[0], pos[1])
 
+    def reset(self):
+        for segment in self.body:
+            segment.hideturtle()
+        self.body.clear()
+        self.create_starting_snake()
+        self.head = self.body[0]
+
     def extend(self):
         """Add one segment to the snake.
 
